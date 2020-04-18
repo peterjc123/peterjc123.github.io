@@ -18,8 +18,8 @@ use-site-title: true
 	  {% endif %}
     </a>
 
-    <p class="post-meta">
-      {{ post.date | date: site.date_format }}
+    <p class="post-meta" style="font-style: normal">
+      发布于 {{ post.date | date: site.date_format }}
     </p>
 
     <div class="post-entry-container">
@@ -41,7 +41,7 @@ use-site-title: true
 
     {% if post.tags.size > 0 %}
     <div class="blog-tags">
-      Tags:
+      标签:
       {% if site.link-tags %}
       {% for tag in post.tags %}
       <a href="{{ '/tags' | relative_url }}#{{- tag -}}">{{- tag -}}</a>

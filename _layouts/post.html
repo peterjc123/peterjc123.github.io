@@ -33,6 +33,10 @@ layout: base
 
       <article role="main" class="blog-post">
         {{ content }}
+        {% if page.no_tail %}
+        {% else %}
+          <p>以上，就是文章的全部内容啦，如果感觉还意犹未尽的话，可以给我的 Github <a href="https://github.com/peterjc123">主页</a>点个follow、项目加个star或者<a href="https://afdian.net/@peterjc123">打赏</a>之类的（滑稽），以后说不定还会再分享一些相关的经验。</p>
+        {% endif %}
       </article>
 
       {% if page.tags.size > 0 %}
