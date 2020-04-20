@@ -21,6 +21,7 @@ url: "https://peterjc123.github.io"
 # List of links in the navigation bar
 navbar-links:
 #   About Me: "关于"
+  状态: "status"
 #   Resources:
 #     - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
 #     - Learn markdown: "http://www.markdowntutorial.com/"
