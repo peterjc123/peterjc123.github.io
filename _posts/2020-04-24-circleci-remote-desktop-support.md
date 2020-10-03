@@ -23,8 +23,13 @@ tags: [Windows, CircleCI, RDP, 调试]
 5. 在上述窗口中，继续敲入如下命令
 
     ```powershell
+    # 2020/10/3 更新
+    # 重新设置RDP服务的监听端口
+    reg add "HKLM\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v PortNumber /t REG_DWORD /d [远程端口2] /f
+    # 重启远程桌面服务
+    powershell -Command Restart-Service TermService -Force
     # 建立远程VM的本地端口转发
-    netsh interface portproxy add v4tov4 listenport=[远程端口] connectaddress=127.0.0.1 connectport=3389
+    netsh interface portproxy add v4tov4 listenport=[远程端口] connectaddress=127.0.0.1 connectport=[远程端口2]
     # 设置新密码（注意复杂性要求）
     net user circleci [新密码]
     ```
@@ -64,7 +69,7 @@ ssh -p 64625 circleci@54.221.135.43 -L 8000:localhost:8000 -- cmd.exe
 python -m http.server
 
 # CMD窗口2
-curl http://localhost:8080
+curl http://localhost:8000
 ```
 
 <p align="center">
